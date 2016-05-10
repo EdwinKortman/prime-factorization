@@ -69,7 +69,7 @@ std::vector <int> prime_factorization(int n) {
             }
         }
 
-        int prime = *std::max_element(std::begin(prime_candidates), std::end(prime_candidates));
+        int prime = *std::max_element(begin(prime_candidates), end(prime_candidates));
 
         prime_factors.push_back(prime);
         n = n / prime;
