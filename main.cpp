@@ -32,19 +32,6 @@ std::vector<int> get_primes(int n)
 
 /**
  * var int n
- * var int p
- *
- * Determine if n divided by p has a remainder
- */
-int divisible(int n, int p) {
-    if (n % p == 0) {
-        return n / p;
-    }
-    return 0;
-}
-
-/**
- * var int n
  *
  * Determine prime factors for n
  */
@@ -54,7 +41,7 @@ std::vector <int> prime_factorization(int n) {
     for (int prime : get_primes(n)) {
         if (n <= 1) break;
 
-        while (divisible(n, prime) != 0) {
+        while (n % prime == 0) {
             prime_factors.push_back(prime);
             n = n / prime;
         }
