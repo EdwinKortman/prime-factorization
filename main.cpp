@@ -40,7 +40,9 @@ int divisible(int n, int p) {
     return 0;
 }
 
-
+/**
+ * Determine prime factors for n
+ */
 std::vector <int> prime_factorization(int n) {
     std::vector <int> primes = get_primes(n);
     std::vector <int> prime_factors;
