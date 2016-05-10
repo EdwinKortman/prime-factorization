@@ -49,11 +49,11 @@ std::vector <int> prime_factorization(int n) {
     std::vector <int> primes;
     primes = get_primes(n);
 
-    std::vector <int> primes_factors;
+    std::vector <int> prime_factors;
 
     while (true) {
         if (n <= 1) {
-            return primes_factors;
+            return prime_factors;
         }
 
         std::vector <int> prime_candidates;
@@ -69,7 +69,7 @@ std::vector <int> prime_factorization(int n) {
         int prime;
         prime = *std::max_element(std::begin(prime_candidates), std::end(prime_candidates));
 
-        primes_factors.push_back(prime);
+        prime_factors.push_back(prime);
         n = n / prime;
     }
 }
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 
     // Convert to int
     int n = atoi(argv[1]);
-    
+
 
     std::cout << "Prime factors for " << n << std::endl;
     std::vector<int> prime_factors;
