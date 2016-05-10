@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <math.h>
 
 /**
  * var int n
@@ -62,7 +62,7 @@ std::vector <int> prime_factorization(int n) {
 
 
         for (int p : primes) {
-            if (p > n) break;
+            if (p > sqrt(n)) break;
 
             if (divisible(n, p) != 0) {
                 prime_candidates.push_back(p);
