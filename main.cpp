@@ -3,6 +3,8 @@
 
 
 /**
+ * var int n
+ *
  * Generate a set of primes by using a Sieve of Erathosthenes
  * Source: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
  */
@@ -31,6 +33,9 @@ std::vector<int> get_primes(int n)
 }
 
 /**
+ * var int n
+ * var int p
+ *
  * Determine if n divided by p has a remainder
  */
 int divisible(int n, int p) {
@@ -41,6 +46,8 @@ int divisible(int n, int p) {
 }
 
 /**
+ * var int n
+ *
  * Determine prime factors for n
  */
 std::vector <int> prime_factorization(int n) {
