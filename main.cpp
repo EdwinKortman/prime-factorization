@@ -10,8 +10,7 @@
  */
 std::vector<int> get_primes(int n)
 {
-    bool prime[n + 1];
-    std::memset(prime, 1, sizeof prime);
+    std::vector <bool> prime(n, true);
 
     for (int p = 2; p * p <= n; p++) {
         if (prime[p]) {
