@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <math.h>
 
 /**
  * var int n
@@ -22,7 +21,7 @@ std::vector<int> get_primes(int n)
 
     std::vector<int> primes;
 
-    for (int p = 1; p <= n; p++) {
+    for (int p = 2; p <= n; p++) {
         if (prime[p]) {
             primes.push_back(p);
         }
@@ -50,30 +49,18 @@ int divisible(int n, int p) {
  * Determine prime factors for n
  */
 std::vector <int> prime_factorization(int n) {
-    std::vector <int> primes = get_primes(n);
     std::vector <int> prime_factors;
 
-    while (true) {
-        if (n <= 1) {
-            return prime_factors;
+    for (int prime : get_primes(n)) {
+        if (n <= 1) break;
+
+        while (divisible(n, prime) != 0) {
+            prime_factors.push_back(prime);
+            n = n / prime;
         }
-
-        std::vector <int> prime_candidates;
-
-
-        for (int p : primes) {
-            if (p > sqrt(n)) break;
-
-            if (divisible(n, p) != 0) {
-                prime_candidates.push_back(p);
-            }
-        }
-
-        int prime = *std::max_element(begin(prime_candidates), end(prime_candidates));
-
-        prime_factors.push_back(prime);
-        n = n / prime;
     }
+
+    return prime_factors;
 }
 
 int main(int argc, char **argv)
@@ -86,9 +73,8 @@ int main(int argc, char **argv)
     int n = atoi(argv[1]);
 
     std::cout << "Prime factors for " << n << std::endl;
-    std::vector<int> prime_factors = prime_factorization(n);
 
-    for (int p : prime_factors) {
+    for (int p : prime_factorization(n)) {
         std::cout << p << std::endl;
     }
 
