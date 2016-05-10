@@ -1,15 +1,12 @@
 #include <iostream>
 #include <vector>
-#include <boost/multiprecision/cpp_int.hpp>
 
-using namespace std;
-using namespace boost::multiprecision;
 
 /**
  * Sieve of Eratosthenes
  * Source: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
  */
-vector<int> sieve(int n)
+std::vector<int> sieve(int n)
 {
     // Create array where all values are true
     bool prime[n + 1];
@@ -88,7 +85,7 @@ int main(int argc, char **argv)
     // Convert to int
     int n = atoi(argv[1]);
 
-//    cout << "Prime numbers smaller than or equal to " << n << endl;
+//    std::cout << "Prime numbers smaller than or equal to " << n << std::endl;
 //    std::vector<int> primes;
 //    primes = sieve(n);
 //
@@ -96,7 +93,7 @@ int main(int argc, char **argv)
 //        std::cout << primes[i] << std::endl;
 //    }
 
-    cout << "Prime factors for " << n << endl;
+    std::cout << "Prime factors for " << n << std::endl;
     std::vector<int> primes_defactors;
     primes_defactors = prime_defactorization(n);
 
