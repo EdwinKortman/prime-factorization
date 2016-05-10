@@ -6,7 +6,7 @@
  * Sieve of Eratosthenes
  * Source: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
  */
-std::vector<int> sieve(int n)
+std::vector<int> get_primes(int n)
 {
     // Create array where all values are true
     bool prime[n + 1];
@@ -37,7 +37,7 @@ std::vector<int> sieve(int n)
     return primes;
 }
 
-int division(int p, int n) {
+int divisible(int p, int n) {
     if (n % p == 0) {
         return n / p;
     }
@@ -45,15 +45,15 @@ int division(int p, int n) {
 }
 
 
-std::vector <int> prime_defactorization(int n) {
+std::vector <int> prime_factorization(int n) {
     std::vector <int> primes;
-    primes = sieve(n);
+    primes = get_primes(n);
 
-    std::vector <int> primes_defactored;
+    std::vector <int> primes_factors;
 
     while (true) {
         if (n <= 1) {
-            return primes_defactored;
+            return primes_factors;
         }
 
         std::vector <int> prime_candidates;
@@ -61,7 +61,7 @@ std::vector <int> prime_defactorization(int n) {
         for (int p = 0; p < primes.size(); p++) {
             if (primes[p] > n) break;
 
-            if (division(primes[p], n) != 0) {
+            if (divisible(primes[p], n) != 0) {
                 prime_candidates.push_back(primes[p]);
             }
         }
@@ -69,7 +69,7 @@ std::vector <int> prime_defactorization(int n) {
         int prime;
         prime = *std::max_element(std::begin(prime_candidates), std::end(prime_candidates));
 
-        primes_defactored.push_back(prime);
+        primes_factors.push_back(prime);
         n = n / prime;
     }
 }
@@ -84,21 +84,14 @@ int main(int argc, char **argv)
 
     // Convert to int
     int n = atoi(argv[1]);
-
-//    std::cout << "Prime numbers smaller than or equal to " << n << std::endl;
-//    std::vector<int> primes;
-//    primes = sieve(n);
-//
-//    for (int i = 0; i < primes.size(); i++) {
-//        std::cout << primes[i] << std::endl;
-//    }
+    
 
     std::cout << "Prime factors for " << n << std::endl;
-    std::vector<int> primes_defactors;
-    primes_defactors = prime_defactorization(n);
+    std::vector<int> prime_factors;
+    prime_factors = prime_factorization(n);
 
-    for (int i = 0; i < primes_defactors.size(); i++) {
-        std::cout << primes_defactors[i] << std::endl;
+    for (int i = 0; i < prime_factors.size(); i++) {
+        std::cout << prime_factors[i] << std::endl;
     }
 
 
