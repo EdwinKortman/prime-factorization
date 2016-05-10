@@ -61,11 +61,12 @@ std::vector <int> prime_factorization(int n) {
 
         std::vector <int> prime_candidates;
 
-        for (int p = 0; p < primes.size(); p++) {
-            if (primes[p] > n) break;
 
-            if (divisible(n, primes[p]) != 0) {
-                prime_candidates.push_back(primes[p]);
+        for (int p : primes) {
+            if (p > n) break;
+
+            if (divisible(n, p) != 0) {
+                prime_candidates.push_back(p);
             }
         }
 
@@ -88,8 +89,8 @@ int main(int argc, char **argv)
     std::cout << "Prime factors for " << n << std::endl;
     std::vector<int> prime_factors = prime_factorization(n);
 
-    for (int i = 0; i < prime_factors.size(); i++) {
-        std::cout << prime_factors[i] << std::endl;
+    for (int p : prime_factors) {
+        std::cout << p << std::endl;
     }
 
 
